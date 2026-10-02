@@ -22,5 +22,6 @@ import androidx.room.PrimaryKey
 data class Example(
     @PrimaryKey
     val id: String,
-    val word: String
+    val word: String,
+    val sentence: String
 )
