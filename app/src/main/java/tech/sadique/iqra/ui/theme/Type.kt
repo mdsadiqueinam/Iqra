@@ -1,4 +1,4 @@
-package tech.sadique.qayam.ui.theme
+package tech.sadique.iqra.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
