@@ -23,5 +23,8 @@ data class Example(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     val word: String,
-    val sentence: String
+    // An Arabic sentence without harakat easy to do search
+    val sentence: String,
+    // An Arabic sentence with harakat
+    val formed: String
 )
