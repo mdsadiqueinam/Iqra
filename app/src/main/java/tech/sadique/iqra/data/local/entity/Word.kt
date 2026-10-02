@@ -19,16 +19,25 @@ import androidx.room.PrimaryKey
             parentColumns = ["id"],
             childColumns = ["root"],
             onDelete = ForeignKey.RESTRICT
+        ),
+        ForeignKey(
+            entity = WordCategory::class,
+            parentColumns = ["id"],
+            childColumns = ["category"],
+            onDelete = ForeignKey.RESTRICT
         )
     ],
     indices = [
         Index(value = ["type"]),
-        Index(value = ["root"])
+        Index(value = ["root"]),
+        Index(value = ["category"])
     ]
 )
 data class Word(
     @PrimaryKey
     val id: String,
     val type: String,
-    val root: String
+    val root: String,
+    val category: String,
+    val isQuranic: Boolean = false
 )
