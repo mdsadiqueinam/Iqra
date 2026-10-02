@@ -9,6 +9,8 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 import tech.sadique.iqra.data.local.IqraDatabase
+import tech.sadique.iqra.data.local.dao.ExampleDao
+import tech.sadique.iqra.data.local.dao.MeaningDao
 import tech.sadique.iqra.data.local.dao.RootDao
 import tech.sadique.iqra.data.local.dao.WordDao
 
@@ -31,4 +33,10 @@ object DatabaseModule {
 
     @Provides
     fun provideRootDao(database: IqraDatabase): RootDao = database.rootDao()
+
+    @Provides
+    fun provideExampleDao(database: IqraDatabase): ExampleDao = database.exampleDao()
+
+    @Provides
+    fun provideMeaningDao(database: IqraDatabase): MeaningDao = database.meaningDao()
 }

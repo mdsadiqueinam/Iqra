@@ -13,15 +13,23 @@ import androidx.room.PrimaryKey
             parentColumns = ["id"],
             childColumns = ["language"],
             onDelete = ForeignKey.RESTRICT
+        ),
+        ForeignKey(
+            entity = Example::class,
+            parentColumns = ["id"],
+            childColumns = ["exampleId"],
+            onDelete = ForeignKey.CASCADE
         )
     ],
     indices = [
-        Index(value = ["language"])
+        Index(value = ["language"]),
+        Index(value = ["exampleId"])
     ]
 )
 data class Meaning(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
+    val exampleId: Int,
     val language: String,
     val sentence: String
 )
