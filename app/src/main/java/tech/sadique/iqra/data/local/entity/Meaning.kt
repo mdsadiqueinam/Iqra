@@ -20,8 +20,8 @@ import androidx.room.PrimaryKey
     ]
 )
 data class Meaning(
-    @PrimaryKey
-    val id: String,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
     val language: String,
     val sentence: String
 )

@@ -20,8 +20,8 @@ import androidx.room.PrimaryKey
     ]
 )
 data class Example(
-    @PrimaryKey
-    val id: String,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
     val word: String,
     val sentence: String
 )
