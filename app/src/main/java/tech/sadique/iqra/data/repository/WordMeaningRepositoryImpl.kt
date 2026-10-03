@@ -11,6 +11,12 @@ class WordMeaningRepositoryImpl @Inject constructor(
     private val wordMeaningDao: WordMeaningDao
 ) : WordMeaningRepository {
 
+    override suspend fun upsert(meaning: WordMeaning): Long =
+        wordMeaningDao.upsert(meaning)
+
+    override suspend fun upsert(meanings: List<WordMeaning>): List<Long> =
+        wordMeaningDao.upsert(meanings)
+
     override fun getById(id: Int): Flow<WordMeaning?> =
         wordMeaningDao.getById(id)
 

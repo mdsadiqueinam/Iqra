@@ -11,6 +11,12 @@ class SentenceTranslationRepositoryImpl @Inject constructor(
     private val sentenceTranslationDao: SentenceTranslationDao
 ) : SentenceTranslationRepository {
 
+    override suspend fun upsert(translation: SentenceTranslation): Long =
+        sentenceTranslationDao.upsert(translation)
+
+    override suspend fun upsert(translations: List<SentenceTranslation>): List<Long> =
+        sentenceTranslationDao.upsert(translations)
+
     override fun getById(id: Int): Flow<SentenceTranslation?> =
         sentenceTranslationDao.getById(id)
 

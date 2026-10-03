@@ -11,6 +11,10 @@ class WordRepositoryImpl @Inject constructor(
     private val wordDao: WordDao
 ) : WordRepository {
 
+    override suspend fun upsert(word: Word) = wordDao.upsert(word)
+
+    override suspend fun upsert(words: List<Word>) = wordDao.upsert(words)
+
     override fun getById(id: String): Flow<Word?> = wordDao.getById(id)
 
     override fun search(query: String, quranic: Boolean?): Flow<List<Word>> =

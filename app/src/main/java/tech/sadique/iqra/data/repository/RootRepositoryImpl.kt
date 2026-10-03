@@ -11,6 +11,10 @@ class RootRepositoryImpl @Inject constructor(
     private val rootDao: RootDao
 ) : RootRepository {
 
+    override suspend fun upsert(root: Root) = rootDao.upsert(root)
+
+    override suspend fun upsert(roots: List<Root>) = rootDao.upsert(roots)
+
     override fun getById(id: String): Flow<Root?> = rootDao.getById(id)
 
     override fun search(query: String): Flow<List<Root>> = rootDao.search(query)

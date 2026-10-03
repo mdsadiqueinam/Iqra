@@ -2,11 +2,18 @@ package tech.sadique.iqra.data.local.dao
 
 import androidx.room.Dao
 import androidx.room.Query
+import androidx.room.Upsert
 import kotlinx.coroutines.flow.Flow
 import tech.sadique.iqra.data.local.entity.Word
 
 @Dao
 interface WordDao {
+    @Upsert
+    suspend fun upsert(word: Word)
+
+    @Upsert
+    suspend fun upsert(words: List<Word>)
+
     @Query("SELECT * FROM words WHERE id = :id")
     fun getById(id: String): Flow<Word?>
 

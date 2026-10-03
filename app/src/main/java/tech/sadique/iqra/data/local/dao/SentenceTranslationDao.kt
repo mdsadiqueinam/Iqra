@@ -2,11 +2,18 @@ package tech.sadique.iqra.data.local.dao
 
 import androidx.room.Dao
 import androidx.room.Query
+import androidx.room.Upsert
 import kotlinx.coroutines.flow.Flow
 import tech.sadique.iqra.data.local.entity.SentenceTranslation
 
 @Dao
 interface SentenceTranslationDao {
+    @Upsert
+    suspend fun upsert(translation: SentenceTranslation): Long
+
+    @Upsert
+    suspend fun upsert(translations: List<SentenceTranslation>): List<Long>
+
     @Query("SELECT * FROM sentence_translations WHERE id = :id")
     fun getById(id: Int): Flow<SentenceTranslation?>
 

@@ -11,6 +11,10 @@ class SentenceRepositoryImpl @Inject constructor(
     private val sentenceDao: SentenceDao
 ) : SentenceRepository {
 
+    override suspend fun upsert(sentence: Sentence): Long = sentenceDao.upsert(sentence)
+
+    override suspend fun upsert(sentences: List<Sentence>): List<Long> = sentenceDao.upsert(sentences)
+
     override fun getById(id: Int): Flow<Sentence?> = sentenceDao.getById(id)
 
     override fun getByWord(word: String): Flow<List<Sentence>> = sentenceDao.getByWord(word)
