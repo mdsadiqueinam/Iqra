@@ -13,20 +13,11 @@ interface WordDao {
     @Query(
         """
         SELECT * FROM words 
-        WHERE id LIKE '%' || :query || '%' 
+        WHERE (id LIKE '%' || :query || '%' OR root LIKE '%' || :query || '%') 
         AND (:quranic IS NULL OR isQuranic = :quranic)
         """
     )
     fun search(query: String, quranic: Boolean? = null): Flow<List<Word>>
-
-    @Query(
-        """
-        SELECT * FROM words 
-        WHERE root = :root 
-        AND (:quranic IS NULL OR isQuranic = :quranic)
-        """
-    )
-    fun getByRoot(root: String, quranic: Boolean? = null): Flow<List<Word>>
 
     @Query(
         """
