@@ -36,8 +36,6 @@ import androidx.room.PrimaryKey
 data class Word(
     @PrimaryKey
     val id: String,
-    // An Arabic word with its pronunciation(harakat)
-    val formed: String,
     val type: String,
     val root: String,
     val category: String,
