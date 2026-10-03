@@ -5,12 +5,14 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
-import tech.sadique.iqra.data.repository.ExampleRepository
-import tech.sadique.iqra.data.repository.ExampleRepositoryImpl
-import tech.sadique.iqra.data.repository.MeaningRepository
-import tech.sadique.iqra.data.repository.MeaningRepositoryImpl
 import tech.sadique.iqra.data.repository.RootRepository
 import tech.sadique.iqra.data.repository.RootRepositoryImpl
+import tech.sadique.iqra.data.repository.SentenceRepository
+import tech.sadique.iqra.data.repository.SentenceRepositoryImpl
+import tech.sadique.iqra.data.repository.SentenceTranslationRepository
+import tech.sadique.iqra.data.repository.SentenceTranslationRepositoryImpl
+import tech.sadique.iqra.data.repository.WordMeaningRepository
+import tech.sadique.iqra.data.repository.WordMeaningRepositoryImpl
 import tech.sadique.iqra.data.repository.WordRepository
 import tech.sadique.iqra.data.repository.WordRepositoryImpl
 
@@ -32,13 +34,19 @@ abstract class RepositoryModule {
 
     @Binds
     @Singleton
-    abstract fun bindExampleRepository(
-        impl: ExampleRepositoryImpl
-    ): ExampleRepository
+    abstract fun bindSentenceRepository(
+        impl: SentenceRepositoryImpl
+    ): SentenceRepository
 
     @Binds
     @Singleton
-    abstract fun bindMeaningRepository(
-        impl: MeaningRepositoryImpl
-    ): MeaningRepository
+    abstract fun bindSentenceTranslationRepository(
+        impl: SentenceTranslationRepositoryImpl
+    ): SentenceTranslationRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindWordMeaningRepository(
+        impl: WordMeaningRepositoryImpl
+    ): WordMeaningRepository
 }
