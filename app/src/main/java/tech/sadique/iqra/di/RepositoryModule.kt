@@ -5,6 +5,10 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
+import tech.sadique.iqra.data.repository.DailyProgressRepository
+import tech.sadique.iqra.data.repository.DailyProgressRepositoryImpl
+import tech.sadique.iqra.data.repository.PracticeSessionRepository
+import tech.sadique.iqra.data.repository.PracticeSessionRepositoryImpl
 import tech.sadique.iqra.data.repository.RootRepository
 import tech.sadique.iqra.data.repository.RootRepositoryImpl
 import tech.sadique.iqra.data.repository.SentenceRepository
@@ -13,6 +17,8 @@ import tech.sadique.iqra.data.repository.SentenceTranslationRepository
 import tech.sadique.iqra.data.repository.SentenceTranslationRepositoryImpl
 import tech.sadique.iqra.data.repository.WordMeaningRepository
 import tech.sadique.iqra.data.repository.WordMeaningRepositoryImpl
+import tech.sadique.iqra.data.repository.WordProgressRepository
+import tech.sadique.iqra.data.repository.WordProgressRepositoryImpl
 import tech.sadique.iqra.data.repository.WordRepository
 import tech.sadique.iqra.data.repository.WordRepositoryImpl
 
@@ -49,4 +55,22 @@ abstract class RepositoryModule {
     abstract fun bindWordMeaningRepository(
         impl: WordMeaningRepositoryImpl
     ): WordMeaningRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindWordProgressRepository(
+        impl: WordProgressRepositoryImpl
+    ): WordProgressRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindDailyProgressRepository(
+        impl: DailyProgressRepositoryImpl
+    ): DailyProgressRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindPracticeSessionRepository(
+        impl: PracticeSessionRepositoryImpl
+    ): PracticeSessionRepository
 }

@@ -9,11 +9,14 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 import tech.sadique.iqra.data.local.IqraDatabase
+import tech.sadique.iqra.data.local.dao.DailyProgressDao
+import tech.sadique.iqra.data.local.dao.PracticeSessionDao
 import tech.sadique.iqra.data.local.dao.RootDao
 import tech.sadique.iqra.data.local.dao.SentenceDao
 import tech.sadique.iqra.data.local.dao.SentenceTranslationDao
 import tech.sadique.iqra.data.local.dao.WordDao
 import tech.sadique.iqra.data.local.dao.WordMeaningDao
+import tech.sadique.iqra.data.local.dao.WordProgressDao
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -47,4 +50,19 @@ object DatabaseModule {
     fun provideWordMeaningDao(
         database: IqraDatabase
     ): WordMeaningDao = database.wordMeaningDao()
+
+    @Provides
+    fun provideWordProgressDao(
+        database: IqraDatabase
+    ): WordProgressDao = database.wordProgressDao()
+
+    @Provides
+    fun provideDailyProgressDao(
+        database: IqraDatabase
+    ): DailyProgressDao = database.dailyProgressDao()
+
+    @Provides
+    fun providePracticeSessionDao(
+        database: IqraDatabase
+    ): PracticeSessionDao = database.practiceSessionDao()
 }
